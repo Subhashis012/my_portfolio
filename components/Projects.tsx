@@ -34,7 +34,7 @@ const projects = [
     id: 4,
     title: "GreenCart - E-commerce",
     description: "Excited to share GreenCart, a modern and scalable grocery delivery web application designed for both customers and sellers. Built using the powerful MERN stack, it offers a seamless and secure shopping experience from browsing to checkout.",
-    technologies: ["React.js", "Node.js", "Express.js", "Stripe", "MongoDB", "Tailwind CSS"],
+    technologies: ["React.js", "Node.js", "Stripe", "Express.js", "MongoDB", "Tailwind CSS"],
     image: "/assets/greencart.png",
     github: "https://github.com/Subhashis012/GreenCart",
     live: "https://green-cart-gamma.vercel.app/"
