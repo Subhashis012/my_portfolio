@@ -171,17 +171,17 @@ export default function TechStack() {
             <div 
               key={layer}
               className="fixed pointer-events-none z-40 transition-all duration-300 ease-out"
-              style={{
-                left: cursorPosition.x - (30 + layer * 15),
-                top: cursorPosition.y - (30 + layer * 15),
-                width: `${60 + layer * 30}px`,
-                height: `${60 + layer * 30}px`,
-                background: `conic-gradient(from ${layer * 120}deg, transparent, rgba(147, 51, 234, ${0.2 / layer}), rgba(59, 130, 246, ${0.15 / layer}), transparent)`,
-                borderRadius: '50%',
-                transform: `translate(-50%, -50%) rotate(${layer * 45}deg)`,
-                filter: `blur(${layer * 5}px)`,
-                animationDuration: `${2 + layer}s`
-              }}
+              // style={{
+              //   left: cursorPosition.x - (30 + layer * 15),
+              //   top: cursorPosition.y - (30 + layer * 15),
+              //   width: `${60 + layer * 30}px`,
+              //   height: `${60 + layer * 30}px`,
+              //   background: `conic-gradient(from ${layer * 120}deg, transparent, rgba(147, 51, 234, ${0.2 / layer}), rgba(59, 130, 246, ${0.15 / layer}), transparent)`,
+              //   borderRadius: '50%',
+              //   transform: `translate(-50%, -50%) rotate(${layer * 45}deg)`,
+              //   filter: `blur(${layer * 5}px)`,
+              //   animationDuration: `${2 + layer}s`
+              // }}
             ></div>
           ))}
         </>
