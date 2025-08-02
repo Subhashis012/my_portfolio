@@ -23,149 +23,149 @@ export default function HeroSection() {
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas || dimensions.width === 0) return;
+  // useEffect(() => {
+  //   const canvas = canvasRef.current;
+  //   if (!canvas || dimensions.width === 0) return;
 
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+  //   const ctx = canvas.getContext("2d");
+  //   if (!ctx) return;
 
-    canvas.width = dimensions.width;
-    canvas.height = dimensions.height;
+  //   canvas.width = dimensions.width;
+  //   canvas.height = dimensions.height;
 
-    const particles: Array<{
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      size: number;
-      alpha: number;
-      hue: number;
-      pulseSpeed: number;
-    }> = [];
+  //   const particles: Array<{
+  //     x: number;
+  //     y: number;
+  //     vx: number;
+  //     vy: number;
+  //     size: number;
+  //     alpha: number;
+  //     hue: number;
+  //     pulseSpeed: number;
+  //   }> = [];
 
-    for (let i = 0; i < 100; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 1.2,
-        vy: (Math.random() - 0.5) * 1.2,
-        size: Math.random() * 5 + 2,
-        alpha: Math.random() * 0.8 + 0.2,
-        hue: Math.random() * 80 + 200,
-        pulseSpeed: Math.random() * 0.03 + 0.01,
-      });
-    }
+  //   for (let i = 0; i < 100; i++) {
+  //     particles.push({
+  //       x: Math.random() * canvas.width,
+  //       y: Math.random() * canvas.height,
+  //       vx: (Math.random() - 0.5) * 1.2,
+  //       vy: (Math.random() - 0.5) * 1.2,
+  //       size: Math.random() * 5 + 2,
+  //       alpha: Math.random() * 0.8 + 0.2,
+  //       hue: Math.random() * 80 + 200,
+  //       pulseSpeed: Math.random() * 0.03 + 0.01,
+  //     });
+  //   }
 
-    let time = 0;
-    const animate = () => {
-      time += 0.02;
-      ctx.fillStyle = "rgba(15, 23, 42, 0.08)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+  //   let time = 0;
+  //   const animate = () => {
+  //     time += 0.02;
+  //     ctx.fillStyle = "rgba(15, 23, 42, 0.08)";
+  //     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      particles.forEach((particle, index) => {
-        particle.x += particle.vx;
-        particle.y += particle.vy;
+  //     particles.forEach((particle, index) => {
+  //       particle.x += particle.vx;
+  //       particle.y += particle.vy;
 
-        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+  //       if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
+  //       if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
 
-        const dx = mouseRef.current.x - particle.x;
-        const dy = mouseRef.current.y - particle.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
+  //       const dx = mouseRef.current.x - particle.x;
+  //       const dy = mouseRef.current.y - particle.y;
+  //       const distance = Math.sqrt(dx * dx + dy * dy);
 
-        if (distance < 200) {
-          const force = (200 - distance) / 200;
-          particle.vx += dx * 0.00015 * force;
-          particle.vy += dy * 0.00015 * force;
-        }
+  //       if (distance < 200) {
+  //         const force = (200 - distance) / 200;
+  //         particle.vx += dx * 0.00015 * force;
+  //         particle.vy += dy * 0.00015 * force;
+  //       }
 
-        const pulse = Math.sin(time * particle.pulseSpeed) * 0.5 + 0.5;
-        const dynamicSize = particle.size * (0.6 + pulse * 0.6);
-        const dynamicAlpha = particle.alpha * (0.5 + pulse * 0.5);
+  //       const pulse = Math.sin(time * particle.pulseSpeed) * 0.5 + 0.5;
+  //       const dynamicSize = particle.size * (0.6 + pulse * 0.6);
+  //       const dynamicAlpha = particle.alpha * (0.5 + pulse * 0.5);
 
-        const gradient = ctx.createRadialGradient(
-          particle.x,
-          particle.y,
-          0,
-          particle.x,
-          particle.y,
-          dynamicSize * 4
-        );
-        gradient.addColorStop(
-          0,
-          `hsla(${particle.hue}, 90%, 70%, ${dynamicAlpha})`
-        );
-        gradient.addColorStop(
-          0.3,
-          `hsla(${particle.hue}, 80%, 60%, ${dynamicAlpha * 0.7})`
-        );
-        gradient.addColorStop(
-          0.7,
-          `hsla(${particle.hue}, 70%, 50%, ${dynamicAlpha * 0.3})`
-        );
-        gradient.addColorStop(1, `hsla(${particle.hue}, 60%, 40%, 0)`);
+  //       const gradient = ctx.createRadialGradient(
+  //         particle.x,
+  //         particle.y,
+  //         0,
+  //         particle.x,
+  //         particle.y,
+  //         dynamicSize * 4
+  //       );
+  //       gradient.addColorStop(
+  //         0,
+  //         `hsla(${particle.hue}, 90%, 70%, ${dynamicAlpha})`
+  //       );
+  //       gradient.addColorStop(
+  //         0.3,
+  //         `hsla(${particle.hue}, 80%, 60%, ${dynamicAlpha * 0.7})`
+  //       );
+  //       gradient.addColorStop(
+  //         0.7,
+  //         `hsla(${particle.hue}, 70%, 50%, ${dynamicAlpha * 0.3})`
+  //       );
+  //       gradient.addColorStop(1, `hsla(${particle.hue}, 60%, 40%, 0)`);
 
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, dynamicSize, 0, Math.PI * 2);
-        ctx.fillStyle = gradient;
-        ctx.fill();
+  //       ctx.beginPath();
+  //       ctx.arc(particle.x, particle.y, dynamicSize, 0, Math.PI * 2);
+  //       ctx.fillStyle = gradient;
+  //       ctx.fill();
 
-        particles.forEach((otherParticle, otherIndex) => {
-          if (index !== otherIndex) {
-            const dx = particle.x - otherParticle.x;
-            const dy = particle.y - otherParticle.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
+  //       particles.forEach((otherParticle, otherIndex) => {
+  //         if (index !== otherIndex) {
+  //           const dx = particle.x - otherParticle.x;
+  //           const dy = particle.y - otherParticle.y;
+  //           const distance = Math.sqrt(dx * dx + dy * dy);
 
-            if (distance < 150) {
-              const opacity = (1 - distance / 150) * 0.4;
-              const gradient = ctx.createLinearGradient(
-                particle.x,
-                particle.y,
-                otherParticle.x,
-                otherParticle.y
-              );
-              gradient.addColorStop(
-                0,
-                `hsla(${particle.hue}, 80%, 70%, ${opacity})`
-              );
-              gradient.addColorStop(
-                0.5,
-                `hsla(${(particle.hue + otherParticle.hue) / 2}, 85%, 65%, ${
-                  opacity * 1.2
-                })`
-              );
-              gradient.addColorStop(
-                1,
-                `hsla(${otherParticle.hue}, 80%, 70%, ${opacity})`
-              );
+  //           if (distance < 150) {
+  //             const opacity = (1 - distance / 150) * 0.4;
+  //             const gradient = ctx.createLinearGradient(
+  //               particle.x,
+  //               particle.y,
+  //               otherParticle.x,
+  //               otherParticle.y
+  //             );
+  //             gradient.addColorStop(
+  //               0,
+  //               `hsla(${particle.hue}, 80%, 70%, ${opacity})`
+  //             );
+  //             gradient.addColorStop(
+  //               0.5,
+  //               `hsla(${(particle.hue + otherParticle.hue) / 2}, 85%, 65%, ${
+  //                 opacity * 1.2
+  //               })`
+  //             );
+  //             gradient.addColorStop(
+  //               1,
+  //               `hsla(${otherParticle.hue}, 80%, 70%, ${opacity})`
+  //             );
 
-              ctx.beginPath();
-              ctx.moveTo(particle.x, particle.y);
-              ctx.lineTo(otherParticle.x, otherParticle.y);
-              ctx.strokeStyle = gradient;
-              ctx.lineWidth = 1.5;
-              ctx.stroke();
-            }
-          }
-        });
-      });
+  //             ctx.beginPath();
+  //             ctx.moveTo(particle.x, particle.y);
+  //             ctx.lineTo(otherParticle.x, otherParticle.y);
+  //             ctx.strokeStyle = gradient;
+  //             ctx.lineWidth = 1.5;
+  //             ctx.stroke();
+  //           }
+  //         }
+  //       });
+  //     });
 
-      requestAnimationFrame(animate);
-    };
+  //     requestAnimationFrame(animate);
+  //   };
 
-    animate();
+  //   animate();
 
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY };
-      setCursorPosition({ x: e.clientX, y: e.clientY });
-    };
+  //   const handleMouseMove = (e: MouseEvent) => {
+  //     mouseRef.current = { x: e.clientX, y: e.clientY };
+  //     setCursorPosition({ x: e.clientX, y: e.clientY });
+  //   };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, [dimensions]);
+  //   window.addEventListener("mousemove", handleMouseMove);
+  //   return () => {
+  //     window.removeEventListener("mousemove", handleMouseMove);
+  //   };
+  // }, [dimensions]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -187,7 +187,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-purple-900/20 pointer-events-none"></div>
 
       {/* Enhanced Custom Cursor */}
-      <div
+      {/* <div
         className="fixed pointer-events-none z-50 mix-blend-difference transition-all duration-300 ease-out"
         style={{
           left: cursorPosition.x - 20,
@@ -202,10 +202,10 @@ export default function HeroSection() {
           <div className="absolute inset-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-pulse"></div>
           <div className="absolute inset-4 bg-white rounded-full"></div>
         </div>
-      </div>
+      </div> */}
 
       {/* Cursor Trail Effect */}
-      <div
+      {/* <div
         className="fixed pointer-events-none z-40 transition-all duration-700 ease-out"
         style={{
           left: cursorPosition.x - 50,
@@ -218,7 +218,7 @@ export default function HeroSection() {
           transform: "translate(-50%, -50%)",
           filter: "blur(10px)",
         }}
-      ></div>
+      ></div> */}
 
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <div className="floating-element mb-6 sm:mb-8">
@@ -289,7 +289,7 @@ export default function HeroSection() {
         onMouseLeave={() => setIsHovering(false)}
         className="absolute bottom-8 sm:bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer"
       >
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center hover:border-white/50 transition-colors">
+        <div className="w-6 h-10 border-2 border-white/30 hidden md:block rounded-full md:flex justify-center hover:border-white/50 transition-colors">
           <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
         </div>
       </button>

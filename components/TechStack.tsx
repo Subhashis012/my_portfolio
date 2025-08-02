@@ -57,62 +57,62 @@ export default function TechStack() {
   const sectionRef = useRef<HTMLElement>(null);
   const animationRef = useRef<number>();
 
-  useEffect(() => {
-    const initialRotations: {[key: string]: { x: number, y: number, spin: number }} = {};
-    techStack.forEach(category => {
-      category.technologies.forEach(tech => {
-        initialRotations[tech.name] = { x: 0, y: 0, spin: 0 };
-      });
-    });
-    setRotations(initialRotations);
+  // useEffect(() => {
+  //   const initialRotations: {[key: string]: { x: number, y: number, spin: number }} = {};
+  //   techStack.forEach(category => {
+  //     category.technologies.forEach(tech => {
+  //       initialRotations[tech.name] = { x: 0, y: 0, spin: 0 };
+  //     });
+  //   });
+  //   setRotations(initialRotations);
 
-    const handleGlobalMouseMove = (e: MouseEvent) => {
-      setCursorPosition({ x: e.clientX, y: e.clientY });
-    };
+  //   const handleGlobalMouseMove = (e: MouseEvent) => {
+  //     setCursorPosition({ x: e.clientX, y: e.clientY });
+  //   };
 
-    window.addEventListener('mousemove', handleGlobalMouseMove);
-    return () => window.removeEventListener('mousemove', handleGlobalMouseMove);
-  }, []);
+  //   window.addEventListener('mousemove', handleGlobalMouseMove);
+  //   return () => window.removeEventListener('mousemove', handleGlobalMouseMove);
+  // }, []);
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (sectionRef.current) {
-        const rect = sectionRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: e.clientX - rect.left,
-          y: e.clientY - rect.top
-        });
-      }
-    };
+  // useEffect(() => {
+  //   const handleMouseMove = (e: MouseEvent) => {
+  //     if (sectionRef.current) {
+  //       const rect = sectionRef.current.getBoundingClientRect();
+  //       setMousePosition({
+  //         x: e.clientX - rect.left,
+  //         y: e.clientY - rect.top
+  //       });
+  //     }
+  //   };
 
-    const animate = () => {
-      setRotations(prev => {
-        const newRotations: {[key: string]: { x: number, y: number, spin: number }} = {};
-        Object.keys(prev).forEach(key => {
-          newRotations[key] = {
-            x: prev[key].x + (Math.random() - 0.5) * 0.2,
-            y: prev[key].y + (Math.random() - 0.5) * 0.2,
-            spin: prev[key].spin + 0.5
-          };
-        });
-        return newRotations;
-      });
-      animationRef.current = requestAnimationFrame(animate);
-    };
+  //   const animate = () => {
+  //     setRotations(prev => {
+  //       const newRotations: {[key: string]: { x: number, y: number, spin: number }} = {};
+  //       Object.keys(prev).forEach(key => {
+  //         newRotations[key] = {
+  //           x: prev[key].x + (Math.random() - 0.5) * 0.2,
+  //           y: prev[key].y + (Math.random() - 0.5) * 0.2,
+  //           spin: prev[key].spin + 0.5
+  //         };
+  //       });
+  //       return newRotations;
+  //     });
+  //     animationRef.current = requestAnimationFrame(animate);
+  //   };
 
-    const section = sectionRef.current;
-    if (section) {
-      section.addEventListener('mousemove', handleMouseMove);
-      animationRef.current = requestAnimationFrame(animate);
+  //   const section = sectionRef.current;
+  //   if (section) {
+  //     section.addEventListener('mousemove', handleMouseMove);
+  //     animationRef.current = requestAnimationFrame(animate);
       
-      return () => {
-        section.removeEventListener('mousemove', handleMouseMove);
-        if (animationRef.current) {
-          cancelAnimationFrame(animationRef.current);
-        }
-      };
-    }
-  }, []);
+  //     return () => {
+  //       section.removeEventListener('mousemove', handleMouseMove);
+  //       if (animationRef.current) {
+  //         cancelAnimationFrame(animationRef.current);
+  //       }
+  //     };
+  //   }
+  // }, []);
 
   const getTechCardTransform = (tech: any, isHovered: boolean) => {
     const baseRotation = rotations[tech.name] || { x: 0, y: 0, spin: 0 };
@@ -233,7 +233,7 @@ export default function TechStack() {
                         setHoveredTech(null);
                       }}
                       style={{
-                        transform: getTechCardTransform(tech, hoveredTech === tech.name),
+                        // transform: (tech, hoveredTech === tech.name),
                         transformStyle: 'preserve-3d',
                         transition: 'all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1)',
                         animationDelay: `${(categoryIndex * 0.2) + (techIndex * 0.1)}s`
