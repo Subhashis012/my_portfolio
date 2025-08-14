@@ -50,12 +50,12 @@ const projects = [
   },
   {
     id: 6,
-    title: "SwiftTalk  - Real-Time Chat App",
-    description: "Thrilled to share SwiftTalk, a fully functional and responsive chat application that delivers real-time messaging.",
-    technologies: ["React", "Socket.io", "Node.js", "Express.js" , "MongoDB"],
-    image: "/assets/swifttalk.png",
-    github: "https://github.com/Subhashis012/SwiftTalk",
-    live: "https://swift-talk-delta.vercel.app/"
+    title: "Nexus - The Next-Gen Realtime Communication Platform",
+    description: "Thrilled to share Nexus, a fully functional and responsive chat application that delivers real-time messaging, Video Calling",
+    technologies: ["React", "Stream", "Node.js", "Express.js" , "MongoDB"],
+    image: "/assets/nexus.png",
+    github: "https://github.com/Subhashis012/Nexus",
+    live: "https://nexus-fyqu.onrender.com/"
   },
   {
     id: 7,
@@ -75,15 +75,15 @@ const projects = [
     github: "https://github.com/Subhashis012/yc_directory",
     live: "https://yc-directory-beryl.vercel.app/"
   },
-  // {
-  //   id: 9,
-  //   title: "Food Delivery App",
-  //   description: "Mobile-first food ordering platform with restaurant management, real-time tracking, and payment integration.",
-  //   technologies: ["React Native", "Node.js", "MongoDB", "Stripe"],
-  //   image: "https://readdy.ai/api/search-image?query=Food%20delivery%20mobile%20app%20interface%20with%20restaurant%20listings%2C%20food%20items%2C%20ordering%20system%2C%20modern%20food%20app%20design%2C%20delivery%20application%20mockup&width=400&height=250&seq=project-food-009&orientation=landscape",
-  //   github: "https://github.com/subhashisdhara",
-  //   live: "https://food-delivery-demo.vercel.app"
-  // }
+  {
+    id: 9,
+    title: "SwiftTalk  - Real-Time Chat App",
+    description: "Thrilled to share SwiftTalk, a fully functional and responsive chat application that delivers real-time messaging.",
+    technologies: ["React", "Socket.io", "Node.js", "Express.js" , "MongoDB"],
+    image: "/assets/swifttalk.png",
+    github: "https://github.com/Subhashis012/SwiftTalk",
+    live: "https://swift-talk-delta.vercel.app/"
+  }
 ];
 
 export default function Projects() {
